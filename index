@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pour Lisa ❤️</title>
+<style>
+body {
+background: linear-gradient(135deg, #ff758c, #ff7eb3);
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: Arial;
+text-align: center;
+color: white;
+margin: 0;
+overflow: hidden;
+}
+button {
+padding: 15px 25px;
+font-size: 18px;
+margin: 10px;
+border-radius: 25px;
+border: none;
+cursor: pointer;
+}
+#yes { background: #ff3366; color: white; }
+#no { background: white; color: #ff3366; }
+
+.petal {
+position: absolute;
+top: -10px;
+animation: fall linear infinite;
+}
+@keyframes fall {
+0% { transform: translateY(0); }
+100% { transform: translateY(110vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div>
+<h1>Lisa ❤️</h1>
+<p id="question">Veux-tu être ma Valentine samedi ? 💌</p>
+<button id="yes">Oui 💖</button>
+<button id="no">Non 😢</button>
+</div>
+
+<script>
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const question = document.getElementById("question");
+
+let scale = 1;
+
+no.onclick = function() {
+scale += 0.3;
+yes.style.transform = "scale(" + scale + ")";
+question.innerText = "T'es sûre ? 🥺";
+};
+
+yes.onclick = function() {
+question.innerText = "Je savais que tu dirais oui 😍❤️";
+no.style.display = "none";
+};
+
+function petal() {
+const p = document.createElement("div");
+p.className = "petal";
+p.innerHTML = "🌸";
+p.style.left = Math.random()*100+"vw";
+p.style.animationDuration = (3+Math.random()*5)+"s";
+document.body.appendChild(p);
+setTimeout(()=>p.remove(),8000);
+}
+setInterval(petal,300);
+</script>
+
+</body>
+</html>
